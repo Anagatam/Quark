@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/quark_allocation_dark.png" alt="Quark Optimization Engine" height="150">
-</p>
-
 # Quark: The Enterprise Portfolio Optimization Engine
 
 Welcome to **Quark**. Quark is an institutional-grade library implementing mathematically superior non-convex portfolio optimization algorithms, driven by heavily-tailed Mantegna's Levy Flights and Deep PyTorch Autoencoders.
@@ -17,9 +13,13 @@ Inspired by `scikit-learn` and DeepMind's core architectures, Quark seamlessly a
 | **Code**      | [![PyPI](https://img.shields.io/pypi/v/quark-optim.svg)](https://pypi.org/project/quark-optim/) [![Python Versions](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11-blue?logo=python&logoColor=white)](#) [![PyTorch](https://img.shields.io/badge/PyTorch-Accelerated-ee4c2c)](#) |
 | **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-140%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-600%2Fmonth-brightgreen)](#) |
 
-<p align="center">
-  <img src="assets/quark_cumulative_returns_dark.png" alt="Quark Cumulative Returns Benchmark" width="800">
-</p>
+## Institutional Dashboard Overview
+
+| Performance & Drawdown Topography | Volatility Efficiency Boundary |
+|:---:|:---:|
+| <img src="assets/quark_cumulative_returns_dark.png" alt="Quark Cumulative Returns" width="100%"> | <img src="assets/quark_efficiency_dark.png" alt="Quark Volatility Efficiency" width="100%"> |
+| **Cross-Asset Correlation Matrix** | **Target Capital Allocation** |
+| <img src="assets/quark_correlation_dark.png" alt="Quark Correlation Matrix" width="100%"> | <img src="assets/quark_allocation_dark.png" alt="Quark Allocation" width="100%"> |
 
 ---
 
@@ -129,9 +129,7 @@ In this section, we detail Quark's primary architectural pillars. More exhaustiv
 ### PyTorch GPU Acceleration
 Institutional portfolio management relies on processing thousands of concurrent permutations of weights.
 
-<p align="center">
-  <img src="assets/quark_cumulative_returns_dark.png" alt="Quark Trajectory Simulation" width="800">
-</p>
+
 
 - **Vectorized Evolutionary Loops**: Replaced standard CPU nested loops with single multidimensional PyTorch Tensors. Thousands of fireflies update positions simultaneously.
 - **Mantegna's Levy Flights**: Replaced standard Gaussian noise with heavy-tailed stochastic jumps (Gamma functions) allowing the algorithm to "teleport" out of deep Local Minima safely.
@@ -142,13 +140,7 @@ Understanding how structural matrices shift over time natively is paramount. Qua
 - **Autoencoder Bottlenecks**: Distills strictly idiosyncratic variations out of the empirical historical pricing matrices.
 - **Random Matrix Theory (RMT)**: Automatically binds the resulting matrix using Marchenko-Pastur eigen-clipping guarantees to enforce Positive Definiteness (PD) under extreme leverage optimization.
 
-<p align="center">
-  <img src="assets/quark_correlation_dark.png" alt="Quark Correlation Matrix" width="600">
-</p>
 
-<p align="center">
-  <img src="assets/quark_allocation_dark.png" alt="Quark Equilibrium Allocations" width="300">
-</p>
 
 ### Institutional Loss Functions
 - **CVaR Penalty Vectors**: Computes strictly against the expected shortfall derived dynamically from non-parametric historical percentiles bounds.
@@ -157,10 +149,6 @@ Understanding how structural matrices shift over time natively is paramount. Qua
 
 ### Risk-Return Topography & Volatility Efficiency
 Quark calculates the true mathematical absolute frontier using an accelerated vector field, outperforming every constituent asset on risk-adjusted margins natively.
-
-<p align="center">
-  <img src="assets/quark_efficiency_dark.png" alt="Quark Volatility Efficiency" width="800">
-</p>
 
 ---
 
