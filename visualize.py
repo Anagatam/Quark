@@ -1,18 +1,12 @@
 import os
 import numpy as np
 import pandas as pd
-import yfinance as yf
 import matplotlib.pyplot as plt
 import seaborn as sns
 from quark.facade import MasterQuark
+from quark.data.loader import QuarkDataLoader
 
 sns.set_theme(style="whitegrid", palette="rocket")
-
-def fetch_real_data(tickers: list, start_date: str, end_date: str) -> pd.DataFrame:
-    tickers_with_bench = tickers + ['SPY']
-    data = yf.download(tickers_with_bench, start=start_date, end=end_date, progress=False, auto_adjust=True)
-    prices = data['Close'] if 'Close' in data.columns else data
-    return prices.dropna(axis=1, how='all')
 
 def plot_allocation(weights_dict, save_path):
     plt.figure(figsize=(8, 8))
@@ -59,7 +53,10 @@ def main():
     ]
     end_date = pd.Timestamp.today().strftime('%Y-%m-%d')
     start_date = (pd.Timestamp.today() - pd.DateOffset(years=3)).strftime('%Y-%m-%d')
-    prices_df = fetch_real_data(universe, start_date, end_date)
+    
+    loader = QuarkDataLoader(universe + ['SPY'], start_date, end_date)
+    prices_df = loader.fetch()
+    
     opt_prices = prices_df[[c for c in prices_df.columns if c != 'SPY']]
     
     model = MasterQuark(max_iterations=150)

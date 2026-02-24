@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="assets/quark_allocation.png" width="220" alt="Quark Allocation Logo"/>
   <h1>🌌 Quark Optim </h1>
   
   <p><strong>Institutional-Grade PyTorch-Accelerated Firefly Portfolio Optimization Engine</strong></p>
@@ -17,27 +18,20 @@
       <img src="https://img.shields.io/badge/python-3.9+-blue.svg" alt="Python Version">
     </a>
     <a href="https://pytorch.org/">
-      <img src="https://img.shields.io/badge/PyTorch-Accelerated-ee4c2c.svg" alt="PyTorch">
+      <img src="https://img.shields.io/badge/PyTorch-CUDA/MPS-ee4c2c.svg" alt="PyTorch">
     </a>
   </p>
 </div>
 
 ---
 
-## ⚡ Non-Convex Portfolio Mastery
-
-Traditional solvers (like SciPy's SLSQP) consistently fail or become trapped in local minima when confronted with realistic institutional constraints:
-1. **Strict Cardinality ($K \le 8$)**: Selecting a small exact number of assets from a massive 500+ universe.
-2. **Absolute Bounds**: e.g., $w_i \ge 5\%$, $w_i \le 25\%$.
-3. **Coherent Risk Penalties**: Non-differentiable $CVaR_{95}$ and Max Drawdown functions.
-
-**Quark** completely bypasses mathematical limitations by simulating highly dimensional swarms of biological "Fireflies" utilizing Heavy-Tailed **Mantegna's Levy Flights**. These entities jump aggressively across the non-convex objective space simultaneously, ensuring convergence on the *true* Global Optimum.
+Traditional solvers (like SciPy's SLSQP) consistently fail or become trapped in local minima when confronted with realistic institutional constraints (Strict Cardinality, Absolute Bounds, Non-differentiable $CVaR$). **Quark** completely bypasses mathematical limitations by simulating highly dimensional swarms of biological "Fireflies" utilizing Heavy-Tailed **Mantegna's Levy Flights**. These entities jump aggressively across the non-convex objective space simultaneously over PyTorch Tensors, ensuring convergence on the *true* Global Optimum.
 
 ---
 
-## 🏗️ Deep Architectural Features
+## 🚀 The Google-Tier Architecture
 
-### 1. The `SwarmTensor` GPU Accelerator
+### 1. `SwarmTensor` GPU Accelerator
 Quark's core evolutionary loops are fully vectorized into multidimensional `torch.Tensor` architectures. When deployed to CUDA/Apple Metal hardware, thousands of Firefly position permutations are calculated simultaneously, slashing NP-Hard search times from hours down to milliseconds.
 
 ### 2. Deep Denoising Autoencoder
@@ -45,21 +39,35 @@ Instead of relying on fragile historical sample covariances, Quark utilizes PyTo
 
 ### 3. Institutional Mathematics ($Luminescence$)
 The `luminescence` module implements peer-reviewed quantitative mathematics designed for absolute preservation of Tier-1 capital:
-- **Random Matrix Theory (RMT)**: Eigenvalue clipping utilizing Marchenko-Pastur distribution bounds ensures the covariance matrix is strictly Positive Definite (PD), completely preventing degenerate edge-case allocations.
-- **Black-Litterman Synthesis**: Harmonically blends Deep Learning expected returns with Market-Implied global equilibrium priors to prevent portfolio implosions during regime shifts.
+- **Random Matrix Theory (RMT)**: Eigenvalue clipping utilizing Marchenko-Pastur distribution bounds ensures strict Positive Definiteness (PD).
+- **Black-Litterman Synthesis**: Harmonically blends Deep Learning expected returns with Market-Implied global equilibrium priors.
 - **Conditional Value-at-Risk ($CVaR$)**: Optimizes strictly against the 5% worst-case left-tail distribution.
 
 ---
 
-## 🚀 Quickstart Guide
+## 📊 Performance Benchmarks (Global Cross-Market)
+
+By merging US Large-Cap growth stocks with the Indian NIFTY 50, Quark discovers pristine global hedging structures out-of-sample.
+
+<div align="center">
+  <img src="assets/quark_cumulative_returns.png" width="800" alt="Cumulative Returns">
+</div>
+<br/>
+<div align="center">
+  <img src="assets/quark_allocation.png" width="600" alt="Asset Allocation Pie Chart">
+</div>
+
+---
+
+## ⚡ Quickstart Guide
 
 ### Installation
-You can easily install Quark directly from PyPI or build from source using the provided `Makefile`.
+You can easily install Quark directly from PyPI or build from source.
 
 ```bash
 pip install quark-optim
 
-# Or clone for development:
+# Development Build
 git clone https://github.com/Anagatam/Quark.git
 cd Quark
 make install
@@ -67,57 +75,45 @@ make install
 
 ### The Beautiful API (`.illuminate(X)`)
 
-We meticulously designed the `MasterQuark` facade to align perfectly with the Scikit-Learn estimator syntax, while maintaining strict Biological Naming Conventions. Feed empirical market prices matrices into the model, and watch the Swarm **Illuminate**.
+We meticulously designed the `MasterQuark` facade to align perfectly with the Scikit-Learn estimator syntax. We also provide a built-in `QuarkDataLoader` to effortlessly fetch and synchronize cross-market datasets!
 
 ```python
-import pandas as pd
-import yfinance as yf
 from quark.facade import MasterQuark
+from quark.data.loader import QuarkDataLoader
 
-# 1. Provide a massive multi-market universe (E.g. US & NIFTY 50)
-universe = ["NVDA", "MSFT", "LLY", "RELIANCE.NS", "HDFCBANK.NS"]
-prices_df = yf.download(universe, start="2021-01-01", end="2024-01-01")['Close']
+# 1. Fetch & Synchronize a Global Universe via Quark's Native Loader
+tickers = [
+    "NVDA", "MSFT", "META", "LLY",       # US Heavyweights
+    "HDFCBANK.NS", "NTPC.NS", "SUNPHARMA.NS" # Indian NIFTY 50
+]
+loader = QuarkDataLoader(tickers, start_date="2021-01-01", end_date="2024-01-01")
+prices_df = loader.fetch()
 
-# 2. Instantiate the Metaheuristic Optimizer
+# 2. Instantiate the PyTorch Metaheuristic Optimizer
 model = MasterQuark(
     objective_type='composite', # Balances Alpha, Volatility, CVaR, & Max Drawdown
-    max_assets=3,               # Strict non-convex Cardinality Constraint (Must purely select 3)
+    max_assets=4,               # Strict non-convex Cardinality Constraint (Must purely select 4)
     lower_bound=0.05,           # Minimum 5% Allocation per selected stock
     upper_bound=0.40,           # Maximum 40% Allocation 
     num_fireflies=100,          # Size of the Biological Swarm
-    max_iterations=200          # Evolutionary Generations
+    max_iterations=150          # Evolutionary Generations
 )
 
 # 3. Absorb Market Physics and Optimize
 model.illuminate(prices_df)
 
 # 4. View Institutional Metrics
-print(model.metrics_['optimal_weights'])
-print(f"Projected Annualized Return: {model.metrics_['annualized_return']:.2%}")
-```
+print("\\n✨ Optimal Weights:")
+for ticker, weight in model.metrics_['optimal_weights'].items():
+    print(f"  - {ticker}: {weight:.2%}")
 
----
-
-## 🔬 Directory Structure
-```plaintext
-quark/
-├── base.py                   # Abstract Base Classes (BaseObjective, BaseConstraint)
-├── core/
-│   ├── luminescence.py       # Core Math (CVaR, Drawdown, RMT, Black-Litterman)
-│   └── objectives.py         # JIT/CPU-accelerated biological objective functions
-├── data/
-│   └── processor.py          # MAD Winsorization & Data cleansing
-├── deep/
-│   └── autoencoder.py        # PyTorch Risk Autoencoder (Denoising Covariance)
-└── optimizer/
-    ├── constraints.py        # Deterministic Feasible Space Reparation mappings
-    ├── quark.py             # Highly optimized CPU/Numba inner loops
-    └── swarmtensor.py        # Full CUDA/PyTorch multidimensional global evaluation
+print(f"\\n📈 Projected Annualized Return: {model.metrics_['annualized_return']:.2%}")
+print(f"📉 Max Historical Drawdown: {model.metrics_['max_drawdown']:.2%}")
 ```
 
 ---
 
 <div align="center">
   <br/>
-  <p>Built with ❤️ by <b>Anagatm Technologies</b></p>
+  <p>Engineered with 🔬 by <b>Anagatm Technologies</b></p>
 </div>

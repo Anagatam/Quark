@@ -1,13 +1,7 @@
 import numpy as np
 import pandas as pd
-import yfinance as yf
 from quark.facade import MasterQuark
-
-def fetch_real_data(tickers: list, start_date: str, end_date: str) -> pd.DataFrame:
-    print(f"\\n[DATA] Downloading data for {len(tickers)} tickers from {start_date} to {end_date}...")
-    data = yf.download(tickers, start=start_date, end=end_date, progress=False, auto_adjust=True)
-    prices = data['Close'] if 'Close' in data.columns else data
-    return prices.dropna(axis=1, how='all')
+from quark.data.loader import QuarkDataLoader
 
 def benchmark():
     universe = [
@@ -19,7 +13,9 @@ def benchmark():
     
     end_date = pd.Timestamp.today().strftime('%Y-%m-%d')
     start_date = (pd.Timestamp.today() - pd.DateOffset(years=3)).strftime('%Y-%m-%d')
-    prices_df = fetch_real_data(universe, start_date, end_date)
+    
+    loader = QuarkDataLoader(universe, start_date, end_date)
+    prices_df = loader.fetch()
     
     max_assets_allowed = 8
     min_weight = 0.05
