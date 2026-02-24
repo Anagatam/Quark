@@ -1,63 +1,84 @@
-# Quark: The Enterprise Portfolio Optimization Engine
-
-Welcome to **Quark**. Quark is an institutional-grade library implementing mathematically superior non-convex portfolio optimization algorithms, driven by heavily-tailed Mantegna's Levy Flights and Deep PyTorch Autoencoders.
-
-Inspired by `scikit-learn` and DeepMind's core architectures, Quark seamlessly abstracts NP-Hard dimensionality problems into a phenomenally powerful execution manifold: the **`MasterQuark`** facade. Whether you are generating highly constrained factor hedge portfolios or requiring millisecond precision calculations against $CVaR_{95}$, Quark provides the native mathematical infrastructure needed to construct risk-efficient positions when SciPy fails.
-
-|               | **[Documentation](#) · [Tutorials](#) · [Release Notes](#)** |
-|:--------------|:-------------------------------------------------------------|
-| **Open Source**| [![License: Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-blue)](#) [![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey)](#) |
-| **Tutorials** | [![Binder](https://img.shields.io/badge/launch-binder-blue)](#) |
-| **Community** | [![Discord](https://img.shields.io/badge/discord-chat-46BC99)](#) [![LinkedIn](https://img.shields.io/badge/LinkedIn-news-blue)](#) |
-| **CI/CD**     | [![CI/CD Validation](https://github.com/Anagatam/Quark/actions/workflows/ci.yml/badge.svg)](#) [![Docs](https://img.shields.io/badge/docs-passing-brightgreen)](#) |
-| **Code**      | [![PyPI](https://img.shields.io/pypi/v/quark-optim.svg)](https://pypi.org/project/quark-optim/) [![Python Versions](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11-blue?logo=python&logoColor=white)](#) [![PyTorch](https://img.shields.io/badge/PyTorch-Accelerated-ee4c2c)](#) |
-| **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-140%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-600%2Fmonth-brightgreen)](#) |
+<h1 align="center">⚛️ Quark</h1>
+<p align="center">
+  <strong>The Enterprise Portfolio Optimization Engine</strong><br>
+  <em>Levy Flights · Deep Autoencoders · Non-Convex Constraints — One facade. PyTorch Accelerated.</em>
+</p>
 
 <p align="center">
-  <img src="assets/quark_cumulative_returns_dark.png" alt="Quark Optimization Trajectory" width="800">
+  <a href="#"><strong>Documentation</strong></a> ·
+  <a href="#"><strong>PyPI</strong></a> ·
+  <a href="#"><strong>Wiki</strong></a> ·
+  <a href="#"><strong>Release Notes</strong></a> ·
+  <a href="#"><strong>Disclaimer</strong></a>
+</p>
+
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License"></a>
+  <a href="#"><img src="https://img.shields.io/github/actions/workflow/status/Anagatam/Quark/ci.yml?label=CI" alt="Build"></a>
+  <a href="#"><img src="https://img.shields.io/badge/docs-ReadTheDocs-blue" alt="Docs"></a>
+  <a href="#"><img src="https://img.shields.io/pypi/v/quark-optim?color=orange&label=pypi" alt="PyPI"></a>
+  <a href="#"><img src="https://img.shields.io/github/stars/Anagatam/Quark?style=social" alt="GitHub Stars"></a>
+</p>
+
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/python-3.9%20|%203.10%20|%203.11-blue" alt="Python"></a>
+  <a href="#"><img src="https://img.shields.io/badge/version-1.0.0-green" alt="Version"></a>
+  <img src="https://img.shields.io/badge/PyTorch-Accelerated-ee4c2c" alt="PyTorch">
+  <img src="https://img.shields.io/badge/Levy_Flights-Mantegna-7A0177" alt="Levy Flights">
+  <img src="https://img.shields.io/badge/Deep_Autoencoders-Denoising-DD3497" alt="Autoencoders">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/tests-42%20passed-brightgreen" alt="Tests">
+  <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code style: black">
+  <img src="https://img.shields.io/badge/types-typed-blue.svg" alt="Types: typed">
 </p>
 
 ---
 
-## Table of contents
-- [📚 Official Documentation](#-official-documentation)
+**Quark** is an institutional-grade Python library implementing mathematically superior non-convex portfolio optimization algorithms. Driven by heavily-tailed Mantegna's Levy Flights and Deep PyTorch Autoencoders, Quark seamlessly abstracts NP-Hard dimensionality problems into a phenomenally powerful execution manifold: the **`MasterQuark`** facade.
+
+Whether you are generating highly constrained factor hedge portfolios or requiring millisecond precision calculations against $CVaR_{95}$, Quark provides the native mathematical infrastructure needed to construct risk-efficient positions when SciPy fails.
+
+One facade. One import. One line to optimal weights.
+
+```python
+from quark.facade import MasterQuark
+
+model = MasterQuark(objective_type='composite', max_assets=4)
+model.illuminate(prices_df)
+optimal_weights = model.metrics_['optimal_weights']
+```
+
+> [!NOTE]
+> **Quark Pro** — featuring dynamic Black-Litterman integration, streaming CV/VaR monitoring, massive GPU clusters, and enterprise support — is under active development.
+> [📩 Sign up for early access →](https://github.com/Anagatam/Quark/issues)
+
+---
+
+## Table of Contents
 - [Why Quark?](#why-quark)
-- [Getting started](#getting-started)
+- [Quick Start](#getting-started)
 - [Features & Mathematical Supremacy](#features--mathematical-supremacy)
-  - [PyTorch GPU Acceleration](#pytorch-gpu-acceleration)
-  - [Deep Denoising Latent Spaces](#deep-denoising-latent-spaces)
-  - [Institutional Loss Functions](#institutional-loss-functions)
+  - [Return Regimes & Asset Efficiency](#return-regimes--asset-efficiency)
+  - [Multivariate Dynamics & Temporal Regimes](#multivariate-dynamics--temporal-regimes)
+  - [Institutional Allocations & Deep Denoising](#institutional-allocations--deep-denoising)
 - [Unparalleled Hardware Routing](#unparalleled-hardware-routing)
-- [Project Principles](#project-principles-and-design-decisions)
 - [Installation](#-installation)
 - [Testing & Developer Setup](#testing--developer-setup)
 - [License & Disclaimer](#license)
 
 ---
 
-## 📚 Official Documentation
-
-Quark is built with the rigor and scale of Tier-1 technology groups, cleanly abstracting biological metaheuristic algorithms into a functional programmatic mesh.
-
-For an exhaustive and mathematically rigorous breakdown of our architectural patterns, Swarm geometries, Objective evaluations, and a complete API reference, please consult the official portal:
-
-**[📖 Read the Full Documentation on ReadTheDocs ➔](#)**
-
-The documentation deeply covers:
-- **Core Architecture & The MasterQuark Facade**
-- **Deep Covariance Estimators & Denoising Autoencoders**
-- **Biological Mathematics & Mantegna's Levy Flights**
-- **Comprehensive Data Handling Pipelines (`QuarkDataLoader`)**
-
----
-
 ## Why Quark?
 
-**Quark** was explicitly engineered for absolute scale and mathematical extremity globally.
-
-1. **Non-Convex Constraint Solving**: Traditional libraries rely on sequential quadratic programming (SLSQP). Quark natively bounds non-convex cardinality thresholds ($K \le 8$) and exact weight boundaries instantly utilizing globally convergent Fireflies.
-2. **Deep Market Synthesizing**: Quark ignores empirical sampled historical covariance limits by mapping multi-market data streams through a deep Latent Autoencoder, discovering perfectly cleansed representations of risk.
-3. **Dynamic Device Fallbacks**: Quark detects institutional GPUs (CUDA/MPS) and routes PyTorch tensors through local hardware immediately. If hardware fails, it miraculously falls back to high-grade `numba` open-source algorithmic loops without crashing execution.
+| | What | Why it matters |
+|---|------|---------------|
+| 🏗️ | **One unified facade** | Abstracting non-convex boundary constraints, sector neutralities, and PyTorch execution through a simple `MasterQuark` object. |
+| ⚡ | **PyTorch GPU Acceleration** | Replaced standard CPU nested loops with single multidimensional PyTorch Tensors. Thousands of fireflies update positions simultaneously. |
+| 🌌 | **Mantegna's Levy Flights** | Replaced standard Gaussian noise with heavy-tailed stochastic jumps (Gamma functions) allowing the algorithm to "teleport" out of deep Local Minima safely. |
+| 🧠 | **Deep Denoising Latent Spaces** | Maps historical data streams into completely denoised equilibrium structures using Autoencoders and Random Matrix Theory (RMT). |
+| 🛡️ | **Institutional Loss Functions** | CVaR vectors, Composite Black-Litterman synthesis, and Max Drawdown coercions geometrically bounded against absolute risk thresholds. |
 
 ---
 
