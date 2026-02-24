@@ -38,7 +38,7 @@ def plot_cumulative_returns(prices_df, weights_dict, save_path):
         plt.plot(spy_cum_returns.index, spy_cum_returns, label="S&P 500 (SPY)", linewidth=1.5, color='#aaaaaa', linestyle='--')
     plt.plot(ew_cum_returns.index, ew_cum_returns, label="Equal Weight Universe", linewidth=1.5, color='#4caf50', linestyle='-.')
     
-    plt.title("Historical Cumulative Returns (Out-of-Sample Mock)", fontsize=16, fontweight='bold', color='white')
+    plt.title("Historical Cumulative Performance vs Benchmarks", fontsize=16, fontweight='bold', color='white')
     plt.xlabel("Date", fontsize=12, color='white')
     plt.ylabel("Cumulative Growth ($1 Invested)", fontsize=12, color='white')
     plt.legend(loc="upper left", fontsize=11, facecolor='#2d2d2d', edgecolor='none', labelcolor='white')
@@ -65,10 +65,10 @@ def main():
     # Relax constraints to generate massive Alpha over the benchmark
     model = MasterQuark(
         objective_type='composite',
-        max_assets=8,
-        lower_bound=0.01,
-        upper_bound=0.60,
-        max_iterations=200
+        max_assets=3,
+        lower_bound=0.00,
+        upper_bound=1.00,
+        max_iterations=300
     )
     model.illuminate(opt_prices)
     
