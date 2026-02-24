@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/quark_allocation.png" alt="Quark Optimization Engine" height="150">
+  <img src="assets/quark_allocation_dark.png" alt="Quark Optimization Engine" height="150">
 </p>
 
 # Quark: The Enterprise Portfolio Optimization Engine
@@ -18,7 +18,7 @@ Inspired by `scikit-learn` and DeepMind's core architectures, Quark seamlessly a
 | **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-140%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-600%2Fmonth-brightgreen)](#) |
 
 <p align="center">
-  <img src="assets/quark_cumulative_returns.png" alt="Quark Cumulative Returns Benchmark" width="800">
+  <img src="assets/quark_cumulative_returns_dark.png" alt="Quark Cumulative Returns Benchmark" width="800">
 </p>
 
 ---
@@ -130,7 +130,7 @@ In this section, we detail Quark's primary architectural pillars. More exhaustiv
 Institutional portfolio management relies on processing thousands of concurrent permutations of weights.
 
 <p align="center">
-  <img src="assets/quark_cumulative_returns.png" alt="Quark Trajectory Simulation" width="800">
+  <img src="assets/quark_cumulative_returns_dark.png" alt="Quark Trajectory Simulation" width="800">
 </p>
 
 - **Vectorized Evolutionary Loops**: Replaced standard CPU nested loops with single multidimensional PyTorch Tensors. Thousands of fireflies update positions simultaneously.
@@ -143,7 +143,7 @@ Understanding how structural matrices shift over time natively is paramount. Qua
 - **Random Matrix Theory (RMT)**: Automatically binds the resulting matrix using Marchenko-Pastur eigen-clipping guarantees to enforce Positive Definiteness (PD) under extreme leverage optimization.
 
 <p align="center">
-  <img src="assets/quark_allocation.png" alt="Quark Equilibrium Allocations" width="300">
+  <img src="assets/quark_allocation_dark.png" alt="Quark Equilibrium Allocations" width="300">
 </p>
 
 ### Institutional Loss Functions
