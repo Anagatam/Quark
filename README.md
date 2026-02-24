@@ -13,13 +13,9 @@ Inspired by `scikit-learn` and DeepMind's core architectures, Quark seamlessly a
 | **Code**      | [![PyPI](https://img.shields.io/pypi/v/quark-optim.svg)](https://pypi.org/project/quark-optim/) [![Python Versions](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11-blue?logo=python&logoColor=white)](#) [![PyTorch](https://img.shields.io/badge/PyTorch-Accelerated-ee4c2c)](#) |
 | **Downloads** | [![Downloads](https://img.shields.io/badge/downloads-140%2Fweek-brightgreen)](#) [![Downloads](https://img.shields.io/badge/downloads-600%2Fmonth-brightgreen)](#) |
 
-## Institutional Dashboard Overview
-
-| Performance & Drawdown Topography | Volatility Efficiency Boundary |
-|:---:|:---:|
-| <img src="assets/quark_cumulative_returns_dark.png" alt="Quark Cumulative Returns" width="100%"> | <img src="assets/quark_efficiency_dark.png" alt="Quark Volatility Efficiency" width="100%"> |
-| **Cross-Asset Correlation Matrix** | **Target Capital Allocation** |
-| <img src="assets/quark_correlation_dark.png" alt="Quark Correlation Matrix" width="100%"> | <img src="assets/quark_allocation_dark.png" alt="Quark Allocation" width="100%"> |
+<p align="center">
+  <img src="assets/quark_cumulative_returns_dark.png" alt="Quark Optimization Trajectory" width="800">
+</p>
 
 ---
 
@@ -126,29 +122,47 @@ print(f"\\n📈 Projected Annualized Return: {model.metrics_['annualized_return'
 
 In this section, we detail Quark's primary architectural pillars. More exhaustive equations can be found in our core modules.
 
-### PyTorch GPU Acceleration
-Institutional portfolio management relies on processing thousands of concurrent permutations of weights.
+### Return Regimes & Asset Efficiency
+Institutional portfolio management relies on hierarchical clustering of temporal returns and risk-adjusted efficiency plotting.
 
+<p align="center">
+  <img src="assets/quark_monthly_heatmap_dark.png" alt="Monthly Return Heatmap" width="800">
+</p>
 
+- **Chronological Return Clustering**: QuantStats-style Y/M grids isolating momentum drifts, tax-loss harvesting impacts, and macro-regime seasonality across annual structures.
+
+<p align="center">
+  <img src="assets/quark_efficiency_dark.png" alt="Risk vs Return Efficiency" width="800">
+</p>
+
+- **Asset Efficiency Hierarchies**: Volatility vs. Return distributions mapping exactly which singular assets dominate the local efficient frontier.
+
+---
+
+### Multivariate Dynamics & Temporal Regimes
+Understanding how risks evolve over time and across asset classes is paramount. Quark natively maps high-dimensional data flows into temporal matrices, detecting structural regime shifts before they breach limits.
+
+<p align="center">
+  <img src="assets/quark_rolling_vol_dark.png" alt="Rolling Risk Regimes" width="800">
+</p>
+
+- **Rolling Structural Volatility**: Maps moving-window variance structures directly against overlapping 95% Historical VaR clusters, instantly revealing structural macro-regime changes.
+- **Cross-Asset Covariance & Pearson Dependencies**: Instantly maps deep empirical correlation heatmaps to guarantee zero concentration overlaps across distinct asset silos (Equities, Bonds, Crypto, Commodities).
+
+<p align="center">
+  <img src="assets/quark_correlation_dark.png" alt="Cross-Asset Correlation" width="600">
+</p>
+
+### Institutional Allocations & Deep Denoising
+Quark calculates the true mathematical absolute frontier using an accelerated vector field, outperforming every constituent asset on risk-adjusted margins natively.
+
+<p align="center">
+  <img src="assets/quark_allocation_dark.png" alt="Quark Target Allocation" width="600">
+</p>
 
 - **Vectorized Evolutionary Loops**: Replaced standard CPU nested loops with single multidimensional PyTorch Tensors. Thousands of fireflies update positions simultaneously.
-- **Mantegna's Levy Flights**: Replaced standard Gaussian noise with heavy-tailed stochastic jumps (Gamma functions) allowing the algorithm to "teleport" out of deep Local Minima safely.
-
-### Deep Denoising Latent Spaces
-Understanding how structural matrices shift over time natively is paramount. Quark maps historical data streams into completely denoised equilibrium structures.
-
 - **Autoencoder Bottlenecks**: Distills strictly idiosyncratic variations out of the empirical historical pricing matrices.
-- **Random Matrix Theory (RMT)**: Automatically binds the resulting matrix using Marchenko-Pastur eigen-clipping guarantees to enforce Positive Definiteness (PD) under extreme leverage optimization.
-
-
-
-### Institutional Loss Functions
-- **CVaR Penalty Vectors**: Computes strictly against the expected shortfall derived dynamically from non-parametric historical percentiles bounds.
-- **Composite Black-Litterman**: Synthesizes empirical history symmetrically with Bayesian Market Equilibrium calculations natively inside the cost function evaluations.
-- **Max Drawdown Coercion**: Geometrically bounds peak-to-trough waterfall drawdowns inside the active swarm loops.
-
-### Risk-Return Topography & Volatility Efficiency
-Quark calculates the true mathematical absolute frontier using an accelerated vector field, outperforming every constituent asset on risk-adjusted margins natively.
+- **Institutional Loss Functions**: Synthesizes empirical history symmetrically with Bayesian Market Equilibrium calculations and Geometric max drawdown coercions natively inside the cost function evaluations.
 
 ---
 
