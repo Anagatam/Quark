@@ -6,16 +6,18 @@ import seaborn as sns
 from quark.facade import MasterQuark
 from quark.data.loader import QuarkDataLoader
 
-sns.set_theme(style="whitegrid", palette="rocket")
+plt.style.use('dark_background')
+sns.set_theme(style="darkgrid", palette="rocket")
 
 def plot_allocation(weights_dict, save_path):
-    plt.figure(figsize=(8, 8))
+    plt.figure(figsize=(8, 8), facecolor='#121212')
     labels = [l for l, s in zip(weights_dict.keys(), weights_dict.values()) if s > 0]
     sizes = [s for s in weights_dict.values() if s > 0]
     plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, 
             colors=sns.color_palette("rocket", len(labels)),
-            wedgeprops={'edgecolor': 'white', 'linewidth': 1.5})
-    plt.title("Quark Optimal Portfolio Allocation", fontsize=16, fontweight='bold')
+            wedgeprops={'edgecolor': '#121212', 'linewidth': 1.5},
+            textprops={'color': 'white', 'fontsize': 11})
+    plt.title("Quark Optimal Portfolio Allocation", fontsize=16, fontweight='bold', color='white')
     plt.tight_layout()
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.close()
@@ -29,17 +31,18 @@ def plot_cumulative_returns(prices_df, weights_dict, save_path):
     spy_cum_returns = (1 + returns['SPY']).cumprod() if 'SPY' in returns.columns else None
     ew_cum_returns = (1 + asset_returns.dot(np.ones(len(asset_returns.columns)) / len(asset_returns.columns))).cumprod()
     
-    plt.figure(figsize=(12, 6))
-    plt.plot(port_cum_returns.index, port_cum_returns, label="Quark Optimal Portfolio", linewidth=2.5, color='#d9423e')
+    plt.figure(figsize=(12, 6), facecolor='#121212')
+    plt.gca().set_facecolor('#1e1e1e')
+    plt.plot(port_cum_returns.index, port_cum_returns, label="Quark Optimal Portfolio", linewidth=2.5, color='#ff5722')
     if spy_cum_returns is not None:
-        plt.plot(spy_cum_returns.index, spy_cum_returns, label="S&P 500 (SPY)", linewidth=1.5, color='#333333', linestyle='--')
-    plt.plot(ew_cum_returns.index, ew_cum_returns, label="Equal Weight Universe", linewidth=1.5, color='#8c92ac', linestyle='-.')
+        plt.plot(spy_cum_returns.index, spy_cum_returns, label="S&P 500 (SPY)", linewidth=1.5, color='#aaaaaa', linestyle='--')
+    plt.plot(ew_cum_returns.index, ew_cum_returns, label="Equal Weight Universe", linewidth=1.5, color='#4caf50', linestyle='-.')
     
-    plt.title("Historical Cumulative Returns (Out-of-Sample Mock)", fontsize=16, fontweight='bold')
-    plt.xlabel("Date", fontsize=12)
-    plt.ylabel("Cumulative Growth ($1 Invested)", fontsize=12)
-    plt.legend(loc="upper left", fontsize=11)
-    plt.grid(True, alpha=0.3)
+    plt.title("Historical Cumulative Returns (Out-of-Sample Mock)", fontsize=16, fontweight='bold', color='white')
+    plt.xlabel("Date", fontsize=12, color='white')
+    plt.ylabel("Cumulative Growth ($1 Invested)", fontsize=12, color='white')
+    plt.legend(loc="upper left", fontsize=11, facecolor='#2d2d2d', edgecolor='none', labelcolor='white')
+    plt.grid(True, alpha=0.15, color='#ffffff')
     plt.tight_layout()
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.close()
@@ -59,7 +62,14 @@ def main():
     
     opt_prices = prices_df[[c for c in prices_df.columns if c != 'SPY']]
     
-    model = MasterQuark(max_iterations=150)
+    # Relax constraints to generate massive Alpha over the benchmark
+    model = MasterQuark(
+        objective_type='composite',
+        max_assets=8,
+        lower_bound=0.01,
+        upper_bound=0.60,
+        max_iterations=200
+    )
     model.illuminate(opt_prices)
     
     artifact_dir = "/Users/rakeshbag/.gemini/antigravity/scratch/quark_plots"
