@@ -147,12 +147,6 @@ In this section, we detail Quark's primary architectural pillars. More exhaustiv
 Institutional portfolio management relies on hierarchical clustering of temporal returns and risk-adjusted efficiency plotting.
 
 <p align="center">
-  <img src="assets/quark_monthly_heatmap_dark.png" alt="Monthly Return Heatmap" width="800">
-</p>
-
-- **Chronological Return Clustering**: QuantStats-style Y/M grids isolating momentum drifts, tax-loss harvesting impacts, and macro-regime seasonality across annual structures.
-
-<p align="center">
   <img src="assets/quark_efficiency_dark.png" alt="Risk vs Return Efficiency" width="800">
 </p>
 
@@ -163,11 +157,6 @@ Institutional portfolio management relies on hierarchical clustering of temporal
 ### Multivariate Dynamics & Temporal Regimes
 Understanding how risks evolve over time and across asset classes is paramount. Quark natively maps high-dimensional data flows into temporal matrices, detecting structural regime shifts before they breach limits.
 
-<p align="center">
-  <img src="assets/quark_rolling_vol_dark.png" alt="Rolling Risk Regimes" width="800">
-</p>
-
-- **Rolling Structural Volatility**: Maps moving-window variance structures directly against overlapping 95% Historical VaR clusters, instantly revealing structural macro-regime changes.
 - **Cross-Asset Covariance & Pearson Dependencies**: Instantly maps deep empirical correlation heatmaps to guarantee zero concentration overlaps across distinct asset silos (Equities, Bonds, Crypto, Commodities).
 
 <p align="center">
