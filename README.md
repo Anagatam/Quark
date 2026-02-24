@@ -143,6 +143,10 @@ Understanding how structural matrices shift over time natively is paramount. Qua
 - **Random Matrix Theory (RMT)**: Automatically binds the resulting matrix using Marchenko-Pastur eigen-clipping guarantees to enforce Positive Definiteness (PD) under extreme leverage optimization.
 
 <p align="center">
+  <img src="assets/quark_correlation_dark.png" alt="Quark Correlation Matrix" width="600">
+</p>
+
+<p align="center">
   <img src="assets/quark_allocation_dark.png" alt="Quark Equilibrium Allocations" width="300">
 </p>
 
@@ -150,6 +154,13 @@ Understanding how structural matrices shift over time natively is paramount. Qua
 - **CVaR Penalty Vectors**: Computes strictly against the expected shortfall derived dynamically from non-parametric historical percentiles bounds.
 - **Composite Black-Litterman**: Synthesizes empirical history symmetrically with Bayesian Market Equilibrium calculations natively inside the cost function evaluations.
 - **Max Drawdown Coercion**: Geometrically bounds peak-to-trough waterfall drawdowns inside the active swarm loops.
+
+### Risk-Return Topography & Volatility Efficiency
+Quark calculates the true mathematical absolute frontier using an accelerated vector field, outperforming every constituent asset on risk-adjusted margins natively.
+
+<p align="center">
+  <img src="assets/quark_efficiency_dark.png" alt="Quark Volatility Efficiency" width="800">
+</p>
 
 ---
 
